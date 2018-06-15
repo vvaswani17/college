@@ -1,4 +1,4 @@
-package grid;
+package panel;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -50,16 +50,10 @@ public class SwingListenerDemo {
 
 	}
 
-	public static void main(String[] args) throws InterruptedException {
-		SwingListenerDemo swingDemo = new SwingListenerDemo();
-		ArrayList<Integer> numbers = new ArrayList<Integer>();
-		}
 
 	private void prepareGUI() throws InterruptedException {
-		f = new JFrame("Button Example");
-		
+		f = new JFrame("Memory Test Example Created by Vijay Vaswani (M_Tech-2018-19) - 9004666246");
 		int grid = rows * cols;
-//		distance=grid/9;
 		if(grid<16){
 			JOptionPane.showMessageDialog(null, "Not enough value sir,please increase size !");
 			f.setVisible(true);
@@ -77,9 +71,7 @@ public class SwingListenerDemo {
 			int random = randomGenerator.nextInt(10);
 			
 			if (!numbers.contains(random) && random != 0) {
-//				distance=grid/9;
 				numbers.add(random);
-//				System.out.println(i+" " + random);
 				b = new JButton("" + random);
 				buttonMap.put("b"+i,b);
 				b.setBounds(50, 100, 95, 30);
@@ -114,7 +106,6 @@ public class SwingListenerDemo {
 				f.setVisible(true);
 				k++;
 				j++;
-//				distance--;
 			}
 		
 
@@ -123,16 +114,13 @@ public class SwingListenerDemo {
 
 	protected void check(String text) throws InterruptedException {
 		String position=map.get(text);
-//		System.out.println(position);
 		int number=Integer.parseInt(text);
-		/*int num=Integer.getInteger(map.get("text"));
-		b.setText(map.get("text"));
-		b.setBackground(null);*/
+		b.setBackground(Color.white);
+	
 		if(max==0){
 			count++;
-			disableButton();
+			highlightButtons();
 			max=number;
-//			startTime=System.currentTimeMillis();
 		}else if(number==(max+1)){
 			count++;
 			max=number;
@@ -142,7 +130,6 @@ public class SwingListenerDemo {
 			Thread.sleep(500);
 			System.exit(0); 	
 		}
-//		if(count>9){
 		if(max==9){
 		endTime=System.currentTimeMillis();
 			duration=(endTime-startTime)/1000;
@@ -153,7 +140,7 @@ public class SwingListenerDemo {
 		}
 		
 	}
-	public void disableButton(){
+	public void highlightButtons(){
 		for(int ab=1;ab<=9;ab++){
 			buttonMap.get("b"+ab).setText("");
 			buttonMap.get("b"+ab).setBackground(Color.black);
@@ -161,5 +148,8 @@ public class SwingListenerDemo {
 			
 		}
 	}
-	
+
+	public static void main(String[] args) throws InterruptedException {
+		SwingListenerDemo swingDemo = new SwingListenerDemo();
+		}
 }
